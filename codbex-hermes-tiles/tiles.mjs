@@ -15,6 +15,6 @@ angular.module('applicationTiles', [])
             controller: ['$scope', '$element', function ($scope, $element) {
                 $scope.today = new Date();
             }],
-            templateUrl: "/services/web/codbex-athena-tiles/templates/numericTile.html"
+            templateUrl: "/services/web/codbex-hermes-tiles/templates/numericTile.html"
         };
     }]);
