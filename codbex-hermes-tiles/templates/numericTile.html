@@ -3,20 +3,23 @@
         <div role="button" tabindex="0" class="fd-tile fd-tile--feed tile-auto-layout"
             ng-click="openPerspective(perspective)">
             <div class="fd-tile__header tile-auto-layout">
-                <div class="fd-tile__title">{{title}}</div>
+                <div class="fd-tile__title">{{ title }}</div>
             </div>
-            <fd-card-subtitle><br></fd-card-subtitle>
+            <fd-card-subtitle ng-if="subtitle">{{ subtitle }}</fd-card-subtitle>
             <div class="fd-tile__content tile-auto-layout">
                 <div class="fd-tile__section">
                     <div class="fd-numeric-content">
                         <div class="fd-numeric-content__kpi-container">
-                            <div class="fd-numeric-content__kpi">{{numericData}}</div>
+                            <div class="fd-numeric-content__kpi" ng-if="isFloatingNumber">{{ numericData | number:2  }}
+                            </div>
+                            <div class="fd-numeric-content__kpi" ng-if="!isFloatingNumber">{{ numericData  }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="fd-tile__footer tile-auto-layout">
-                <span class="fd-tile__footer-text">Today: {{ today | date:'dd-MM-yyyy' }}</span>
+                <span class="fd-tile__footer-text" ng-if="footerText">{{ footerText }}</span>
+                <span class="fd-tile__footer-text" ng-if="!footerText">Today: {{ today | date:'dd-MM-yyyy' }}</span>
             </div>
         </div>
     </div>
