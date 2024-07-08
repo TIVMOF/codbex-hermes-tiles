@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:flowable="http://flowable.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.flowable.org/processdef" exporter="Flowable Open Source Modeler" exporterVersion="6.8.1">
+  <process id="myprocess" name="MyProcess" isExecutable="true">
+    <startEvent id="sid-15A5CC2F-F60D-493C-982A-E2E207C0C22F"/>
+    <userTask id="sid-0113EB98-346C-4AC6-9620-954F2D273539" name="SubmitValue" flowable:async="true"/>
+    <sequenceFlow id="sid-B7B9F273-967D-4A2D-963A-B406704E8932" sourceRef="sid-15A5CC2F-F60D-493C-982A-E2E207C0C22F" targetRef="sid-0113EB98-346C-4AC6-9620-954F2D273539"/>
+    <sequenceFlow id="sid-A97D8DC6-F13F-4E73-8CC1-6189F727BDA2" sourceRef="sid-0113EB98-346C-4AC6-9620-954F2D273539" targetRef="sid-DB43BCE2-3513-4889-BFB5-D43B23522BE7"/>
+    <userTask id="sid-DB43BCE2-3513-4889-BFB5-D43B23522BE7" name="Process&#xa;Expense" flowable:async="true"/>
+    <endEvent id="sid-B43DB1D7-D75E-438E-AA33-B712AAE7CB34"/>
+    <sequenceFlow id="sid-8830D123-E154-4A5B-9217-11209EAA6939" sourceRef="sid-DB43BCE2-3513-4889-BFB5-D43B23522BE7" targetRef="sid-B43DB1D7-D75E-438E-AA33-B712AAE7CB34"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_myprocess">
+    <bpmndi:BPMNPlane bpmnElement="myprocess" id="BPMNPlane_myprocess">
+      <bpmndi:BPMNShape bpmnElement="sid-15A5CC2F-F60D-493C-982A-E2E207C0C22F" id="BPMNShape_sid-15A5CC2F-F60D-493C-982A-E2E207C0C22F">
+        <omgdc:Bounds height="30.0" width="30.0" x="64.0" y="112.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-0113EB98-346C-4AC6-9620-954F2D273539" id="BPMNShape_sid-0113EB98-346C-4AC6-9620-954F2D273539">
+        <omgdc:Bounds height="80.0" width="100.0" x="139.0" y="87.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-DB43BCE2-3513-4889-BFB5-D43B23522BE7" id="BPMNShape_sid-DB43BCE2-3513-4889-BFB5-D43B23522BE7">
+        <omgdc:Bounds height="80.0" width="100.0" x="285.0" y="87.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-B43DB1D7-D75E-438E-AA33-B712AAE7CB34" id="BPMNShape_sid-B43DB1D7-D75E-438E-AA33-B712AAE7CB34">
+        <omgdc:Bounds height="28.0" width="28.0" x="430.0" y="113.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-A97D8DC6-F13F-4E73-8CC1-6189F727BDA2" id="BPMNEdge_sid-A97D8DC6-F13F-4E73-8CC1-6189F727BDA2" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="238.95000000000002" y="127.0"/>
+        <omgdi:waypoint x="285.0" y="127.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-8830D123-E154-4A5B-9217-11209EAA6939" id="BPMNEdge_sid-8830D123-E154-4A5B-9217-11209EAA6939" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
+        <omgdi:waypoint x="384.95000000000005" y="127.0"/>
+        <omgdi:waypoint x="430.0" y="127.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B7B9F273-967D-4A2D-963A-B406704E8932" id="BPMNEdge_sid-B7B9F273-967D-4A2D-963A-B406704E8932" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="93.94999848995758" y="127.0"/>
+        <omgdi:waypoint x="139.0" y="127.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
