@@ -1,8 +1,9 @@
 angular.module('applicationTiles', [])
-    .directive('NumericTile', ['SplitPaneState', function () {
+    .directive('numericTile', function () {
         return {
             restrict: 'E',
             transclude: false,
+            replace: true,
             scope: {
                 perspective: '@',
                 title: '@',
@@ -11,11 +12,11 @@ angular.module('applicationTiles', [])
                 footerText: '@?',
                 isFloatingNumber: '<?'
             },
-            controller: ['$scope', function ($scope) {
-                if (!$scope.footerText) {
-                    $scope.today = new Date();
+            link: function (scope) {
+                if (!scope.footerText) {
+                    scope.today = new Date();
                 }
-            }],
+            },
             templateUrl: "/services/web/codbex-hermes-tiles/templates/numericTile.html"
         };
-    }]);
+    });
