@@ -20,82 +20,58 @@ angular.module('applicationTiles', [])
             templateUrl: "/services/web/codbex-hermes-tiles/templates/numericTile.html"
         };
     })
-    .directive('pipeChartTile', function () {
+    .directive('barChartTile', function () {
         return {
             restrict: 'E',
             transclude: false,
             replace: true,
             scope: {
                 title: '@',
-                chartData: '<'
+                data: '<',
+                indexAxis: '@'
             },
-            link: function (scope, element) {
-                var ctx = document.getElementById('pipeChartCanvas').getContext('2d');
+            link: function (scope) {
+                var ctx = document.getElementById('barChartCanvas').getContext('2d');
+
+                var labels = scope.data.map(item => item.label);
+                var data = scope.data.map(item => item.value);
+
+                var gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, '#5DA5DA');
+                gradient.addColorStop(1, '#FAA43A');
 
                 var chart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: [
-                            'Initial',
-                            'Open',
-                            'Contacted',
-                            'Replied',
-                            'Opportunity',
-                            'Quotation',
-                            'Lost',
-                            'Confirmed',
-                            'Closed'
-                        ],
+                        labels: labels,
                         datasets: [{
-                            label: 'Number of Leads',
-                            data: [
-                                scope.leadData.Initial,
-                                scope.leadData.Open,
-                                scope.leadData.Contacted,
-                                scope.leadData.Replied,
-                                scope.leadData.Opportunity,
-                                scope.leadData.Quotation,
-                                scope.leadData.Lost,
-                                scope.leadData.Confirmed,
-                                scope.leadData.Closed
-                            ],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(199, 199, 199, 0.2)',
-                                'rgba(83, 102, 255, 0.2)',
-                                'rgba(102, 153, 153, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)',
-                                'rgba(199, 199, 199, 1)',
-                                'rgba(83, 102, 255, 1)',
-                                'rgba(102, 153, 153, 1)'
-                            ],
-                            borderWidth: 1
+                            data: data,
+                            backgroundColor: gradient,
+                            borderColor: 'rgba(0,0,0,0)',
+                            borderWidth: 0
                         }]
                     },
                     options: {
+                        indexAxis: scope.indexAxis,
                         scales: {
-                            x: {
-                                beginAtZero: true
-                            },
                             y: {
-                                beginAtZero: true
+                                ticks: {
+                                    autoSkip: false,
+                                    maxRotation: 30,
+                                    minRotation: 30
+                                }
                             }
-                        }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false
                     }
                 });
             },
-            templateUrl: "/services/web/codbex-hermes-tiles/templates/pipeChartTile.html"
-        }
-    })
+            templateUrl: "/services/web/codbex-hermes-tiles/templates/barChartTile.html"
+        };
+    });
