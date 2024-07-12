@@ -74,4 +74,51 @@ angular.module('applicationTiles', [])
             },
             templateUrl: "/services/web/codbex-hermes-tiles/templates/barChartTile.html"
         };
+    })
+    .directive('pieChartTile', function () {
+        return {
+            restrict: 'E',
+            transclude: false,
+            replace: true,
+            scope: {
+                title: '@',
+                pieData: '<'
+            },
+            link: function (scope, element) {
+                var ctx = document.getElementById('pieChartCanvas').getContext('2d');
+
+                var labels = scope.pieData.map(item => item.label);
+                var data = scope.pieData.map(item => item.value);
+
+                var chart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Pie Chart Data',
+                            data: data,
+                            backgroundColor: [
+                                '#FF6384',
+                                '#36A2EB',
+                                '#FFCE56',
+                                '#4BC0C0',
+                                '#9966FF',
+                                '#FF9F40'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+            },
+            templateUrl: "/services/web/codbex-hermes-tiles/templates/pieChartTile.html"
+        };
     });
